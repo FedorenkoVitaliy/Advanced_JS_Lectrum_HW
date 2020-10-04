@@ -39,9 +39,7 @@ const cleanerRobot = new CleanerRobot(INITIAL_ENERGY, INITIAL_SQUARE);
 function onSubmit(event) {
     event.preventDefault();
     cleanerRobot.clean(); /* Начинаю процесс уборки. Время уборки: 4.5 часов. */
-    setTimeout(() => {
-        cleanerRobot.stop(); /* Спустя 1 секунду: Уборка завершена досрочно. Осталось заряда батареи: 45.5. */
-    }, 1000);
+    setTimeout(() => cleanerRobot.stop(), 1000);
 }
 
 form.addEventListener('submit', onSubmit);
