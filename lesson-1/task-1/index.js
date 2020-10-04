@@ -15,7 +15,7 @@ function CleanerRobot(
     const getCleaningTime = () => cleaningSquare / CLEANING_SPEED;
     const setRemainingEnergy = (time) => energy = energy - (ENERGY_CONSUMPTION * time);
     const onReady = () => {
-        resultOutput.innerHTML = `Уборка завершена. Осталось заряда батареи: ${energy}.`;
+        resultOutput.innerHTML += `Уборка завершена. Осталось заряда батареи: ${energy}.`;
     }
 
     this.clean = () => {
@@ -28,7 +28,7 @@ function CleanerRobot(
 
     this.stop = () => {
         clearTimeout(timerId);
-        resultOutput.innerHTML =`Спустя 1 секунду: Уборка завершена досрочно. Осталось заряда батареи: ${energy}`;
+        resultOutput.innerHTML +=`Спустя 1 секунду: Уборка завершена досрочно. Осталось заряда батареи: ${energy}`;
     }
 }
 
@@ -39,7 +39,9 @@ const cleanerRobot = new CleanerRobot(INITIAL_ENERGY, INITIAL_SQUARE);
 function onSubmit(event) {
     event.preventDefault();
     cleanerRobot.clean(); /* Начинаю процесс уборки. Время уборки: 4.5 часов. */
-    setTimeout(() => cleanerRobot.stop(), 1000);
+    setTimeout(() => {
+        cleanerRobot.stop()
+    }, 1000);
 }
 
 form.addEventListener('submit', onSubmit);
