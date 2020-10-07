@@ -16,7 +16,25 @@
 
 // РЕШЕНИЕ
 class Worker {
+    #firstName;
+    #lastName;
+    #hours;
+    #rate;
+    constructor(firstName, lastName, hours, rate){
+        this.#firstName = firstName;
+        this.#lastName = lastName;
+        this.#hours = hours;
+        this.#rate = rate;
+    }
 
+    getName(){ return (this.#firstName + this.#lastName) }
+    getRate(){ return this.#rate }
+    getHours(){
+        return this.#hours
+    }
+    getSalary(){
+        return (this.getRate() * this.getHours());
+    }
 }
 // РЕШЕНИЕ
 
@@ -39,10 +57,10 @@ form.onsubmit = (event) => {
     workers.unshift(new Worker(firstName, lastName, hours, rate));
     workers.forEach((worker) => {
         // ПРОВЕРОЧНЫЙ КОД
-        // console.log(worker.getName()); // Джон Доу
-        // console.log(worker.getRate()); // 10
-        // console.log(worker.getHours()); // 31
-        // console.log(worker.getSalary()); // 10 * 31 = 310
+        //console.log(worker.getName()); // Джон Доу
+        //console.log(worker.getRate()); // 10
+        //console.log(worker.getHours()); // 31
+        //console.log(worker.getSalary()); // 10 * 31 = 310
 
         workersHTML += getWorker({
             name: worker.getName(),
