@@ -17,8 +17,14 @@
 
 // РЕШЕНИЕ
 class Worker {
+    constructor(firsName, lastName, rate, hours){
+        this.firstName = firsName;
+        this.lastName = lastName;
+        this.rate = rate;
+        this.hours = hours;
+    }
     getSalary() {
-        return 5;
+        return this.rate * this.hours;
     }
 }
 // РЕШЕНИЕ
