@@ -22,11 +22,20 @@
 
 // РЕШЕНИЕ
 class User {
+  constructor(firstName, lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  getName = () => `${this.firstName} ${this.lastName}`;
 
 }
 
 class Student extends User {
-
+  constructor(name, year){
+    super(...name.split(' '));
+    this.year = year;
+  }
+  getCourse = () => new Date().getFullYear() - this.year;
 }
 // РЕШЕНИЕ
 
