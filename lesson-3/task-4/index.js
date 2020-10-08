@@ -2,7 +2,7 @@
  * Задача 4.
  *
  * Реализуйте класс Stringer, который будет иметь следующие методы (каждый принимает строку в качестве аргумента):
- * 
+ *
  * - reverse(string) — возвращает строку в перевернутом виде;
  * - uppercaseFirst(string) — возвращает строку, сделав ее первую букву заглавной;
  * - uppercaseAll(string) — делает заглавной первую букву каждого слова строки и возвращает её.
@@ -12,6 +12,9 @@
  */
 // РЕШЕНИЕ
 class Stringer {
+    reverse = str => str.split('').reverse().join('');
+    uppercaseFirst = str => str.slice(0,1).toUpperCase() + str.slice(1);
+    uppercaseAll = str => str.split(' ').reduce((acc, string) => acc + this.uppercaseFirst(string) + ' ', '')
 }
 // РЕШЕНИЕ
 

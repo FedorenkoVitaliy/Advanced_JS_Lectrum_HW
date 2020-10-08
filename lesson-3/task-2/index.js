@@ -29,12 +29,8 @@ class Worker {
 
     getName(){ return (this.#firstName + this.#lastName) }
     getRate(){ return this.#rate }
-    getHours(){
-        return this.#hours
-    }
-    getSalary(){
-        return (this.getRate() * this.getHours());
-    }
+    getHours(){return this.#hours}
+    getSalary(){return (this.getRate() * this.getHours());}
 }
 // РЕШЕНИЕ
 
