@@ -1,4 +1,4 @@
-/** 
+/**
 # Задача 2
 
 Улучшите класс `Customers` добавив функцию генератор.
@@ -13,7 +13,17 @@
 
 // РЕШЕНИЕ
 class Customers {
+    constructor(){
+        this.customers = [];
+    }
 
+    add = (customer) => customer.name && this.customers.push(customer);
+    *[Symbol.iterator]() {
+        const verifiedCustomers = this.customers.filter(customer => customer.verified);
+        for(const customer of verifiedCustomers){
+            yield customer
+        }
+    }
 }
 // РЕШЕНИЕ
 
@@ -41,7 +51,7 @@ btn.onclick = () => {
     liElements.forEach((element) => {
         const name = element.querySelector('label').innerHTML;
         const verified = element.querySelector('input').checked;
-    
+
         customers.add({
             name,
             verified
