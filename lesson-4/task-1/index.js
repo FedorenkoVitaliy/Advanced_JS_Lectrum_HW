@@ -3,7 +3,7 @@
 
 Создайте класс `Customers` который умеет работать с механизмом `for of`.
 
-1. Класс `Customers` содержит метод `add` который принимает объект в качестве параметра. 
+1. Класс `Customers` содержит метод `add` который принимает объект в качестве параметра.
    У этого объекта есть обязательное поле `name` и необязательное поле `verified`.
 2. Класс `Customers` при переборе с помощью `for of` должен учитывать только объекты у которых был установлен флаг `verified: true`.
 
@@ -18,7 +18,25 @@
 
 // РЕШЕНИЕ
 class Customers {
-    
+    constructor(){
+        this.customers = [];
+    }
+
+    add = (customer) => customer.name && this.customers.push(customer);
+    [Symbol.iterator]() {
+        let i = 0;
+        const verifiedCustomers = this.customers.filter(customer => customer.verified);
+        return {
+            next: () => {
+                const done = i >= verifiedCustomers.length;
+                const value = !done ? verifiedCustomers[i++] : undefined;
+                return{
+                    done,
+                    value
+                }
+            }
+        }
+    }
 }
 // РЕШЕНИЕ
 
@@ -46,7 +64,7 @@ btn.onclick = () => {
     liElements.forEach((element) => {
         const name = element.querySelector('label').innerHTML;
         const verified = element.querySelector('input').checked;
-    
+
         customers.add({
             name,
             verified
