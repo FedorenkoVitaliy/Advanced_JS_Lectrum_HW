@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Lectrum</title>
+</head>
+<body>
+    <div class="row">
+        <div class="alert alert-primary" role="alert">
+            <p id="alert">Нет сообщений!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <form id="regForm" class="text-center border border-light p-5">
+                <p class="h4 mb-4">Зарегистрировать сотрудника</p>
+                <input type="text" name="name" class="form-control mb-4" placeholder="Имя и фамилия">
+                <input type="number" min="18" max="70" name="age" class="form-control mb-4" placeholder="Возраст">
+                <input type="text" name="country" class="form-control mb-4" placeholder="Страна">
+                <input type="number" min="100" name="salary" class="form-control mb-4" placeholder="Зарплата">
+                <input class="btn btn-info btn-block" type="submit" value="Добавить" />
+            </form>
+        </div>
+        <div class="col-3">
+            <form id="updateForm" class="text-center border border-light p-5">
+                <p class="h4 mb-4">Обновить сотрудника</p>
+                <input type="number" name="uid" class="form-control mb-4" placeholder="Идентификатор сотрудника">
+                <input type="text" name="name" class="form-control mb-4" placeholder="Имя и фамилия">
+                <input type="number" min="100" name="salary" class="form-control mb-4" placeholder="Зарплата">
+                <input class="btn btn-info btn-block" type="submit" value="Обновить" />
+            </form>
+        </div>
+        <div class="col-3">
+            <form id="searchForm" class="text-center border border-light p-5">
+                <p class="h4 mb-4">Найти сотрудника</p>
+                <input type="number" name="uid" class="form-control mb-4" placeholder="Идентификатор сотрудника">
+                <input class="btn btn-info btn-block" type="submit" value="Поиск" />
+            </form>
+        </div>
+        <div class="col-3">
+            <form id="removeForm" class="text-center border border-light p-5">
+                <p class="h4 mb-4">Удалить сотрудника</p>
+                <input type="number" name="uid" class="form-control mb-4" placeholder="Идентификатор сотрудника">
+                <input class="btn btn-info btn-block" type="submit" value="Удалить" />
+            </form>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <button id="readAll" type="button" class="btn btn-primary">Показать всех сотрудников</button>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-3">
+            <ul id="list">
+                <li>
+                    <div class="card p-4">
+                        <div class="d-flex align-items-center">
+                            <div class="image">
+                                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155">
+                            </div>
+                            <div class="ml-3 w-100">
+                                <h4 class="mb-0 mt-0">Джон Доу</h4> 
+                                <hr/>
+                                <p>Возраст: <b>30</b></p>
+                                <p>Страна: <b>Бразилия</b></p>
+                                <p>Зарплата: <b>300</b></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="./util.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
