@@ -24,7 +24,14 @@ const url = 'https://jsonplaceholder.typicode.com/users';
 // });
 
 // РЕЩЕНИЕ
-const send = (url) => {}
+const send = (url) => new Promise((resolve, reject) => {
+	get(url, (error, result) => {
+		error?
+			reject( error):
+			resolve(result);
+	})
+})
+
 // РЕЩЕНИЕ
 
 send(url)
@@ -33,15 +40,15 @@ send(url)
 
 		list.innerHTML = null;
 		message.innerHTML = null;
-	
-		data.forEach(({ name, email }) => { 
+
+		data.forEach(({ name, email }) => {
 			liHTML += `<li class="list-group-item list-group-item-action">
 					<h2>${name}</h2>
 					<p>Написать письмо: <a href="mailto:${email}">${email}</a></p>
 				</li>
 			`;
 		});
-	
+
 		list.insertAdjacentHTML('afterbegin', liHTML);
     })
     .catch(error => {
