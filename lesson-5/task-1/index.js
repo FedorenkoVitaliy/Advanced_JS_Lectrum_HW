@@ -31,9 +31,11 @@
 
 // РЕШЕНИЕ
 class DB {
+    #id;
+    #persons;
     constructor(){
-        this.id = 0
-        this.persons = new Map()
+        this.#id = 0
+        this.#persons = new Map()
     }
 
     create(person) {
