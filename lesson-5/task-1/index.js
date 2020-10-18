@@ -41,8 +41,8 @@ class DB {
     create(person) {
         const { name, age, country, salary } = person;
         if(name && age && country && salary){
-            const id = String(this.id++);
-            this.persons.set(id, person);
+            const id = String(this.#id++);
+            this.#persons.set(id, person);
             return id;
         }
         else{
@@ -50,13 +50,13 @@ class DB {
         }
     }
     read (uid) {
-        if(!this.persons.has(uid)){
+        if(!this.#persons.has(uid)){
             return new Error('Юзера с таким id не существует');
         }
-        return this.persons.get(uid);
+        return this.#persons.get(uid);
     }
     readAll () {
-        return ([...this.persons.values()]);
+        return ([...this.#persons.values()]);
     }
     update (id, newPersonData) {
         const response = this.read(id);
@@ -68,11 +68,11 @@ class DB {
             ...response,
             ...newPersonData
         }
-        this.persons.set(id, updatedPerson)
+        this.#persons.set(id, updatedPerson)
         return updatedPerson;
     }
     remove (uid) {
-        return this.persons.delete(uid);
+        return this.#persons.delete(uid);
     }
 }
 // РЕШЕНИЕ
