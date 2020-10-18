@@ -5,7 +5,7 @@ const get = (url, cb) => {
     xhr.send();
     xhr.onload = () => {
       if (xhr.status !== 200) {
-        cb(new Error(`Ошибка ${xhr.status}: ${xhr.statusText}`));
+        cb(xhr.status);
       } else {
         cb(null, JSON.parse(xhr.response));
       }

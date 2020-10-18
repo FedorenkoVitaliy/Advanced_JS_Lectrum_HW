@@ -22,14 +22,31 @@
 */
 
 const url = 'https://jsonplaceholder.typicode.com/users';
-// const url = 'https://httpstat.us/400'; // адрес для проверки ошибки
+//const url = 'https://httpstat.us/400'; // адрес для проверки ошибки
 
 const list = document.getElementById('list');
 const message = document.getElementById('message');
 const userForm = document.getElementById('userForm');
 
 // РЕЩЕНИЕ
-class Users {}
+class Users {
+	constructor(url) {
+		this.endpoint = url;
+	}
+	send(param){
+		return new Promise((resolve, reject) => {
+			typeof param !== 'number' && reject( new Error(`TypeError: param must be a number`));
+			typeof this.endpoint !== 'string' && reject( new Error(`TypeError: url must be a string`));
+
+			const path = `${this.endpoint}/${param}`;
+			get(path, (error, result) => {
+				error?
+					reject( new Error(`Произошла ошибка, статус код: ${error}`)):
+					resolve( result );
+			})
+		})
+	}
+}
 // РЕЩЕНИЕ
 
 const users = new Users(url);
@@ -41,19 +58,19 @@ userForm.onsubmit = async (event) => {
 
 	const formData = new FormData(event.target);
 	const uid = formData.get('uid');
-	
+
 	try {
 		if (!uid) {
 			throw new Error('Не указан идентификатор пользователя!');
 		}
 
-		const { name, email } = await users.send(uid);
+		const { name, email } = await users.send(Number(uid));
 		const liHTML = `<li class="list-group-item list-group-item-action">
 				<h2>${name}</h2>
 				<p>Написать письмо: <a href="mailto:${email}">${email}</a></p>
 			</li>
 		`;
-	
+
 		list.insertAdjacentHTML('afterbegin', liHTML);
 	} catch (error) {
 		const msgHTML = `<div class="alert alert-danger" role="alert">
