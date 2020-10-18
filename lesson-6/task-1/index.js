@@ -15,9 +15,12 @@
 */
 
 // РЕШЕНИЕ
-const isCustomerVerified = (user) => {
-    console.log(user);
-};
+const isCustomerVerified = (user) =>
+  new Promise((resolve, reject) => {
+        user.verified?
+          resolve('Пользователь верифицирован'):
+          reject('Пользователь не верифицирован');
+    });
 // РЕШЕНИЕ
 
 const validationForm = document.getElementById('validationForm');
