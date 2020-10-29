@@ -9,7 +9,7 @@
 
 class BankAccount {
     transactions = []; // список транзакций
-    
+
     // вносим депозит, храним с списке транзакций
     deposit(amount) {
         this.transactions.push(amount);
@@ -24,7 +24,9 @@ class BankAccount {
 }
 
 // РЕШЕНИЯ
-class BankAccountProxy extends BankAccount { /**/}
+class BankAccountProxy extends BankAccount {
+    getBalance = () => this.transactions.length? this.transactions[0]: 0;
+}
 // РЕШЕНИЯ
 
 const cost = 30;
