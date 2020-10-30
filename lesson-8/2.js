@@ -25,7 +25,11 @@ class BankAccount {
 
 // РЕШЕНИЯ
 class BankAccountProxy extends BankAccount {
-    getBalance = () => this.transactions.length? this.transactions[0]: 0;
+    deposit(amount) {
+        if(this.transactions.length === 0){
+            this.transactions.push(amount);
+        }
+    }
 }
 // РЕШЕНИЯ
 
